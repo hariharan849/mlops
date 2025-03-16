@@ -24,7 +24,7 @@ pipeline {
                     sh '''
                     if ! dpkg -s python3-venv >/dev/null 2>&1; then
                         echo "Installing python3-venv..."
-                        sudo apt update && sudo apt install -y python3-venv || exit 1
+                        apt update && apt install -y python3-venv || exit 1
                     fi
                     '''
 
