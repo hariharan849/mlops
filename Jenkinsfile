@@ -17,22 +17,15 @@ pipeline {
             }
         }
 
-        stage('Setting up Virtual Environment and Installing Dependencies') {
-            steps {
-                script {
-                    echo 'Checking and Installing python3-venv if not available...'
+        stage('Setting up our Virtual Environment and Installing dependancies'){
+            steps{
+                script{
+                    echo 'Setting up our Virtual Environment and Installing dependancies............'
                     sh '''
-                    if ! dpkg -s python3-venv >/dev/null 2>&1; then
-                        echo "Installing python3-venv..."
-                        apt update && apt install -y python3-venv || exit 1
-                    fi
-                    '''
-
-                    echo 'Setting up Virtual Environment and Installing Dependencies...'
-                    sh '''
-                    python3 -m venv ${VENV_DIR}
-                    ${VENV_DIR}/bin/pip install --upgrade pip
-                    ${VENV_DIR}/bin/pip install -e .
+                    sudo python -m venv ${VENV_DIR}
+                    . ${VENV_DIR}/bin/activate
+                    pip install --upgrade pip
+                    pip install -e .
                     '''
                 }
             }
