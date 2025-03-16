@@ -42,7 +42,7 @@ class DataIngestion:
 
             train_data.to_csv(TRAIN_FILE_PATH)
             test_data.to_csv(TEST_FILE_PATH)
-
+            
             logger.info(f"Train data saved to {TRAIN_FILE_PATH}")
             logger.info(f"Test data saved to {TEST_FILE_PATH}")
         
